@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface ComponentProps {}
 
@@ -10,9 +10,9 @@ export function Navbar({}: ComponentProps) {
       aria-label="main navigation"
     >
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
-          Home
-        </a>
+        <Link className="navbar-item" to="/">
+          &#8592; Impromat Home
+        </Link>
       </div>
       <div className="navbar-menu">
         <div className="navbar-end">

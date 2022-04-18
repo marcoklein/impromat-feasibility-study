@@ -15,6 +15,10 @@ export function Workshop({ workshop }: ComponentProps) {
       <section className="hero is-primary">
         <div className="hero-body">
           <h1 className="title">{workshop.title}</h1>
+          <h1 className="subtitle">
+            {workshop.elements.length} excercises and games for your improv
+            session
+          </h1>
         </div>
       </section>
       <section className="section is-small">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 
@@ -7,7 +7,6 @@ interface ComponentProps {}
 export function WelcomePage(props: ComponentProps) {
   return (
     <>
-      {/* <Navbar></Navbar> */}
       <section className="hero is-primary">
         <div className="hero-body">
           <p className="title">Impromat</p>
@@ -15,17 +14,17 @@ export function WelcomePage(props: ComponentProps) {
             Generate Workshops for Improvisational Theatre
           </p>
         </div>
-        <div className="notification is-warning is-small">
-          Impromat is still work in progress and not yet fully complete.
-        </div>
       </section>
+      <div className="notification is-warning">
+        Impromat is still work in progress and not yet fully complete.
+      </div>
       <section className="section is-small">
         <div className="box">
           <p>
             Create worskhops for improvisational theatre with the press of a
             button.
           </p>
-          <Link className="mt-4 button is-primary" to="workshop">
+          <Link className="mt-4 button is-primary" to="/workshop">
             Plan Workshop
           </Link>
         </div>

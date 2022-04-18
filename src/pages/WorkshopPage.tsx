@@ -10,8 +10,7 @@ export function WorkshopPage() {
 
   useEffect(() => {
     const elements: WorkshopElementModel[] = [];
-    for (let i = 0; i < 10; i++) {
-      // TODO map entries
+    for (let i = 0; i < 8; i++) {
       const { content, tags, title, url } =
         IMPROWIKI[Math.floor(Math.random() * IMPROWIKI.length)];
       elements.push({ content, tags, sourceUrl: url, title });
