@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel serve src/index.html --no-cache",
-    "build": "rimraf dist/* && parcel build src/index.html --public-url .",
+    "build": "rm -r dist/* && cp CNAME dist/ && parcel build src/index.html --public-url .",
     "deploy": "yarn build && gh-pages -d dist"
   },
   "devDependencies": {
@@ -16,7 +16,6 @@
     "gh-pages": "^3.2.3",
     "parcel": "^2.4.1",
     "punycode": "^2.1.1",
-    "rimraf": "^3.0.2",
     "typescript": "^4.6.3"
   },
   "dependencies": {
