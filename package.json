@@ -2,10 +2,10 @@
   "name": "impromat",
   "version": "0.1.0",
   "description": "Plan improv workshops with the press of a button.",
-  "author": "Marco Klein <marco.klein94@gmail.com>",
+  "author": "Marco Klein <hello@marcoklein.dev>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel serve src/index.html",
+    "start": "parcel serve src/index.html --no-cache",
     "build": "rimraf dist/* && parcel build src/index.html --public-url .",
     "deploy": "yarn build && gh-pages -d dist"
   },

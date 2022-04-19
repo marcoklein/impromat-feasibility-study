@@ -1,5 +1,4 @@
 import { WorkshopModel } from "../models/WorkshopModel";
-import MarkdownIt from "markdown-it";
 import { WorkshopElementCard } from "./WorkshopElementCard";
 
 interface ComponentProps {
@@ -13,19 +12,23 @@ export function Workshop({ workshop }: ComponentProps) {
   return (
     <>
       <section className="hero is-primary">
-        <div className="hero-body">
-          <h1 className="title">{workshop.title}</h1>
-          <h1 className="subtitle">
-            {workshop.elements.length} excercises and games for your improv
-            session
-          </h1>
+        <div className="hero is-primary">
+          <div className="hero-body">
+            <h1 className="title">{workshop.title}</h1>
+            <h1 className="subtitle">
+              {workshop.elements.length} &Uuml;bungen und Spiele f&uuml;r eine
+              Improvisationstheaterprobe
+            </h1>
+          </div>
         </div>
       </section>
-      <section className="section is-small">
-        {workshop.elements.map((element) => (
-          <WorkshopElementCard element={element}></WorkshopElementCard>
-        ))}
-      </section>
+      <main className="section">
+        <div className="container">
+          {workshop.elements.map((element) => (
+            <WorkshopElementCard element={element}></WorkshopElementCard>
+          ))}
+        </div>
+      </main>
     </>
   );
 }

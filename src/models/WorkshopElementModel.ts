@@ -3,4 +3,5 @@ export interface WorkshopElementModel {
   content: string;
   tags: string[];
   sourceUrl: string;
+  sourceDate: string;
 }
