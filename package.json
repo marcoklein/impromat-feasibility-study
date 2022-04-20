@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel serve src/index.html --no-cache",
-    "build": "rm -r dist/* && cp CNAME dist/ && parcel build src/index.html --public-url .",
+    "build": "rm -r dist/* && cp CNAME dist/ && cp 404.html dist/ && parcel build src/index.html --public-url .",
     "deploy": "yarn build && gh-pages -d dist"
   },
   "devDependencies": {
