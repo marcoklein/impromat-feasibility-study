@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Workshop } from "../components/Workshop";
 import { IMPROWIKI } from "../data/improwiki";
+import { generateWorkshop } from "../functions/generate-workshop";
 import { WorkshopElementModel } from "../models/WorkshopElementModel";
 import { WorkshopModel } from "../models/WorkshopModel";
 
@@ -16,13 +17,9 @@ export function WorkshopPreviewPage() {
   const [workshop, setWorkshop] = useState<WorkshopModel>();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  function generateWorkshop() {
+  function generateWorkshopCallback() {
     setWorkshop(undefined);
-    const workshopElementTitles: string[] = [];
-    for (let i = 0; i < 8; i++) {
-      const { title } = IMPROWIKI[Math.floor(Math.random() * IMPROWIKI.length)];
-      workshopElementTitles.push(title);
-    }
+    const workshopElementTitles = generateWorkshop();
     setTimeout(() => {
       setSearchParams(
         { [SEARCH_PARAM_ELEMENT_NAME]: workshopElementTitles },
@@ -36,7 +33,15 @@ export function WorkshopPreviewPage() {
     for (const elementTitle of workshopElementTitles) {
       const element = IMPROWIKI.find(({ title }) => elementTitle === title);
       if (element) {
-        const { content, tags, title, url, createdAt } = element;
+        const { content, tags: elementTags, title, url, createdAt } = element;
+        const tags = elementTags.map((tagName) => {
+          const mappings = {
+            warmup: "Aufwärmübung",
+            excercise: "Übung",
+            game: "Spiel",
+          };
+          return (mappings as any)[tagName] ?? tagName;
+        });
         elements.push({
           content,
           tags,
@@ -60,13 +65,13 @@ export function WorkshopPreviewPage() {
   useEffect(() => {
     if (!searchParams.has(SEARCH_PARAM_ELEMENT_NAME)) {
       console.log("set search params");
-      generateWorkshop();
+      generateWorkshopCallback();
     } else {
       const elements = searchParams.getAll(SEARCH_PARAM_ELEMENT_NAME);
       console.log("get search params", elements);
       loadWorkshop(elements);
     }
-  }, [searchParams]);
+  }, [searchParams, setWorkshop, setSearchParams]);
 
   if (!workshop)
     return (
