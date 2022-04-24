@@ -11,34 +11,36 @@ export function WelcomePage(props: ComponentProps) {
         <div className="hero-body">
           <p className="title">Impromat</p>
           <p className="subtitle">
-            Generate Workshops for Improvisational Theatre
+            Generiere Workshops f&uuml;r Improvisationtheater
           </p>
         </div>
       </section>
       <div className="notification is-warning">
-        Impromat is still work in progress and not yet fully complete.
+        Impromat ist noch in der Entwicklung.
       </div>
       <section className="section is-small">
         <div className="box">
           <p>
-            Create worskhops for improvisational theatre with the press of a
-            button.
+            Plane Improvisationtheater Spiele und &Uuml;bungen auf Knopfdruck.
           </p>
           <Link className="mt-4 button is-primary" to="/workshop">
-            Plan Workshop
+            Plane Workshop
           </Link>
         </div>
         <div className="box">
-          <h2 className="title">Why?</h2>
+          <h2 className="title">Warum?</h2>
           <p>
-            Because we often had the following question in our improvisational
-            theatre group: "Hey, has somebody prepared something for our improv
-            session tonight?"
+            Aufgrund folgender Frage in unsere Improgruppe: "Hey, hat jemand
+            heute schon etwas f&uuml;r die Probe vorbereitet?"
           </p>
-          <p>
-            And because I have often wandered through Improwiki or other improv
-            ressources to gather inspiration for new workshops.
-          </p>
+          <p>Und weil ich f&uuml;r Proben oft schnelle Inspiration suche.</p>
+        </div>
+        <div className="box">
+          Impromat ist ein Open-Source Projekt und auf{" "}
+          <a href="https://github.com/marcoklein/impromat" target="_blank">
+            GitHub
+          </a>{" "}
+          zu finden.
         </div>
       </section>
     </>

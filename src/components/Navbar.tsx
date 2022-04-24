@@ -4,23 +4,20 @@ interface ComponentProps {}
 
 export function Navbar({}: ComponentProps) {
   return (
-    <nav
-      className="navbar is-primary"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <nav className="has-background-primary">
       <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
-          &#8592; Impromat Home
-        </Link>
-      </div>
-      <div className="navbar-menu">
-        <div className="navbar-end">
-          <div className="navbar-item">
-            {/* <div className="buttons">
-              <a className="button">New Workshop</a>
-            </div> */}
-          </div>
+        <div className="navbar-item is-flex-grow-1">
+          <Link className="button is-light is-outlined is-small" to="/">
+            &#8592; Start
+          </Link>
+        </div>
+        <div className="navbar-item">
+          <Link
+            className="button is-small is-rounded is-light is-outlined"
+            to="/workshop"
+          >
+            New Workshop
+          </Link>
         </div>
       </div>
     </nav>

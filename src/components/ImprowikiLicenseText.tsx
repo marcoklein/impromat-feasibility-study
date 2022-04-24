@@ -1,9 +1,14 @@
 interface ComponentProps {
   sourceUrl: string;
   title: string;
+  date: string;
 }
 
-export function ImprowikiLicenseText({ sourceUrl, title }: ComponentProps) {
+export function ImprowikiLicenseText({
+  sourceUrl,
+  title,
+  date,
+}: ComponentProps) {
   return (
     <div className="is-italic is-size-7">
       <span className="has-text-weight-bold">Lizenz: </span>
@@ -18,7 +23,8 @@ export function ImprowikiLicenseText({ sourceUrl, title }: ComponentProps) {
       Lizenz von{" "}
       <a href="https://improwiki.com" target="_blank">
         improwiki.de
-      </a>
+      </a>{" "}
+      ({new Date(date).toLocaleDateString()})
     </div>
   );
 }
