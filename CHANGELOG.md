@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 0.3.0
+
+- Using cleaner improv database for workshop generation
+
 ## 0.2.0
 
 - Show date in license information

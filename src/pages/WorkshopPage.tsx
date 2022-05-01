@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Workshop } from "../components/Workshop";
-import { IMPROWIKI } from "../data/improwiki";
+import { IMPROV_DATABASE } from "../data/improv-database";
 import { generateWorkshop } from "../functions/generate-workshop";
 import { WorkshopElementModel } from "../models/WorkshopElementModel";
 import { WorkshopModel } from "../models/WorkshopModel";
@@ -31,7 +31,9 @@ export function WorkshopPreviewPage() {
   function loadWorkshop(workshopElementTitles: string[]) {
     const elements: WorkshopElementModel[] = [];
     for (const elementTitle of workshopElementTitles) {
-      const element = IMPROWIKI.find(({ title }) => elementTitle === title);
+      const element = IMPROV_DATABASE.find(
+        ({ title }) => elementTitle === title
+      );
       if (element) {
         const { content, tags: elementTags, title, url, createdAt } = element;
         const tags = elementTags.map((tagName) => {
