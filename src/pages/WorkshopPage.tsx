@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Workshop } from "../components/Workshop";
 import { IMPROV_DATABASE } from "../data/improv-database";
-import { generateWorkshop } from "../functions/generate-workshop";
+import {
+  findRandomWorkshopElementTitle,
+  generateWorkshop,
+} from "../functions/generate-workshop";
 import { WorkshopElementModel } from "../models/WorkshopElementModel";
 import { WorkshopModel } from "../models/WorkshopModel";
 
@@ -16,6 +19,24 @@ const SEARCH_PARAM_ELEMENT_NAME = "i";
 export function WorkshopPreviewPage() {
   const [workshop, setWorkshop] = useState<WorkshopModel>();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const onChangeClick = useCallback(
+    (element: WorkshopElementModel) => {
+      const elements = searchParams.getAll(SEARCH_PARAM_ELEMENT_NAME);
+      const index = elements.indexOf(element.title);
+      if (index < 0) {
+        console.warn("Element to change not in workshop.");
+        return;
+      }
+      elements[index] = findRandomWorkshopElementTitle();
+
+      setSearchParams(
+        { [SEARCH_PARAM_ELEMENT_NAME]: elements },
+        { replace: true }
+      );
+    },
+    [workshop]
+  );
 
   function generateWorkshopCallback() {
     setWorkshop(undefined);
@@ -36,6 +57,10 @@ export function WorkshopPreviewPage() {
       );
       if (element) {
         const { content, tags: elementTags, title, url, createdAt } = element;
+        // const tags = elementTags.filter(
+        //   (tagName) =>
+        //     !["warmup", "excercise", "game"].find((tag) => tag === tagName)
+        // );
         const tags = elementTags.map((tagName) => {
           const mappings = {
             warmup: "Aufwärmübung",
@@ -95,7 +120,10 @@ export function WorkshopPreviewPage() {
   return (
     <>
       <Navbar></Navbar>
-      <Workshop workshop={workshop}></Workshop>
+      <Workshop
+        workshop={workshop}
+        onChangeWorkshopElementClick={onChangeClick}
+      ></Workshop>
     </>
   );
 }

@@ -1,5 +1,10 @@
 import { IMPROV_DATABASE } from "../data/improv-database";
 
+export function findRandomWorkshopElementTitle(): string {
+  return IMPROV_DATABASE[Math.floor(Math.random() * IMPROV_DATABASE.length)]
+    .title;
+}
+
 export function generateWorkshop() {
   const numWarmupGames = 2;
   const numExcercises = 3;

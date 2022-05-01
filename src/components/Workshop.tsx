@@ -1,14 +1,21 @@
+import { useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
+import { WorkshopElementModel } from "../models/WorkshopElementModel";
 import { WorkshopModel } from "../models/WorkshopModel";
 import { WorkshopElementCard } from "./WorkshopElementCard";
 
 interface ComponentProps {
   workshop: WorkshopModel;
+  onChangeWorkshopElementClick: (element: WorkshopElementModel) => void;
 }
 
 /**
  * Show information about a workshop.
  */
-export function Workshop({ workshop }: ComponentProps) {
+export function Workshop({
+  workshop,
+  onChangeWorkshopElementClick,
+}: ComponentProps) {
   return (
     <>
       <section className="hero is-primary">
@@ -25,7 +32,10 @@ export function Workshop({ workshop }: ComponentProps) {
       <main className="section">
         <div className="container">
           {workshop.elements.map((element) => (
-            <WorkshopElementCard element={element}></WorkshopElementCard>
+            <WorkshopElementCard
+              element={element}
+              onChangeClick={onChangeWorkshopElementClick}
+            ></WorkshopElementCard>
           ))}
         </div>
       </main>
