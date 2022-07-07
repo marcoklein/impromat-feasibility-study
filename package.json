@@ -7,19 +7,23 @@
   "scripts": {
     "start": "parcel serve src/index.html --no-cache",
     "build": "rm -r dist/* && cp CNAME dist/ && cp 404.html dist/ && parcel build src/index.html --public-url .",
-    "deploy": "yarn build && gh-pages -d dist"
+    "deploy": "yarn build && gh-pages -d dist",
+    "deps:upgrade": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
     "@types/markdown-it": "^12.2.3",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
-    "gh-pages": "^3.2.3",
+    "gh-pages": "^4.0.0",
     "parcel": "^2.4.1",
+    "process": "^0.11.10",
     "punycode": "^2.1.1",
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "markdown-it": "^12.3.2",
+    "@mdi/js": "^6.9.96",
+    "@mdi/react": "^1.6.0",
+    "markdown-it": "^13.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0"

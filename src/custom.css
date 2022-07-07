@@ -1,0 +1,7 @@
+@media screen and (max-width: 768px) {
+  /* Fullscreen modal for mobile */
+  .modal .modal-card {
+    max-height: 100vh;
+    height: 100vh;
+  }
+}

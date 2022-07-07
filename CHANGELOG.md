@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- New design for workshop list with modal to show information
+
 ## 0.3.0
 
 - Using cleaner improv database for workshop generation
