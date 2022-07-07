@@ -1,4 +1,9 @@
-import { IMPROWIKI } from "../data/improwiki";
+import { IMPROV_DATABASE } from "../data/improv-database";
+
+export function findRandomWorkshopElementTitle(): string {
+  return IMPROV_DATABASE[Math.floor(Math.random() * IMPROV_DATABASE.length)]
+    .title;
+}
 
 export function generateWorkshop() {
   const numWarmupGames = 2;
@@ -6,9 +11,9 @@ export function generateWorkshop() {
   const numGames = 3;
 
   function findWorkshopsWithTags(tag: string) {
-    return (JSON.parse(JSON.stringify(IMPROWIKI)) as typeof IMPROWIKI).filter(
-      (workshop) => workshop.tags.find((item) => item === tag)
-    );
+    return (
+      JSON.parse(JSON.stringify(IMPROV_DATABASE)) as typeof IMPROV_DATABASE
+    ).filter((workshop) => workshop.tags.find((item) => item === tag));
   }
 
   const workshopElementTitles: string[] = [];
@@ -37,7 +42,8 @@ export function generateWorkshop() {
 export function randomGenerator() {
   const workshopElementTitles: string[] = [];
   for (let i = 0; i < 8; i++) {
-    const { title } = IMPROWIKI[Math.floor(Math.random() * IMPROWIKI.length)];
+    const { title } =
+      IMPROV_DATABASE[Math.floor(Math.random() * IMPROV_DATABASE.length)];
     workshopElementTitles.push(title);
   }
   return workshopElementTitles;

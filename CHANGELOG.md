@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.3.0
+
+- Using cleaner improv database for workshop generation
+- Allow locking and unlocking of games
+- Generate new element if unlocked
+- Cleaner design for workshop element cards
+
 ## 0.2.0
 
 - Show date in license information
