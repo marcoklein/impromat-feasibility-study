@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Workshop } from "../components/Workshop";
-import { IMPROV_DATABASE } from "../data/improv-database";
 import {
   findRandomWorkshopElementTitle,
   generateWorkshop,
 } from "../functions/generate-workshop";
+import { mapWorkshopElementTitlesToWorkshop } from "../functions/map-workshop-element-titles-to-workshop";
 import { WorkshopElementModel } from "../models/WorkshopElementModel";
 import { WorkshopModel } from "../models/WorkshopModel";
 
@@ -50,42 +50,7 @@ export function WorkshopPreviewPage() {
   }
 
   function loadWorkshop(workshopElementTitles: string[]) {
-    const elements: WorkshopElementModel[] = [];
-    for (const elementTitle of workshopElementTitles) {
-      const element = IMPROV_DATABASE.find(
-        ({ title }) => elementTitle === title
-      );
-      if (element) {
-        const { content, tags: elementTags, title, url, createdAt } = element;
-        // const tags = elementTags.filter(
-        //   (tagName) =>
-        //     !["warmup", "excercise", "game"].find((tag) => tag === tagName)
-        // );
-        const tags = elementTags.map((tagName) => {
-          const mappings = {
-            warmup: "Aufwärmübung",
-            excercise: "Übung",
-            game: "Spiel",
-          };
-          return (mappings as any)[tagName] ?? tagName;
-        });
-        elements.push({
-          content,
-          tags,
-          sourceUrl: url,
-          title,
-          sourceDate: createdAt,
-        });
-      } else {
-        console.warn(
-          `Found no workshop element with name "${elementTitle}". Skipping element.`
-        );
-      }
-    }
-    const workshop: WorkshopModel = {
-      title: "Workshopinspiration",
-      elements,
-    };
+    const workshop = mapWorkshopElementTitlesToWorkshop(workshopElementTitles);
     setWorkshop(workshop);
   }
 

@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 import { setHTMLOverflow } from "../helpers/set-html-overflow";
 import { WorkshopElementModel } from "../models/WorkshopElementModel";
 import { ImprowikiLicenseText } from "./ImprowikiLicenseText";
+import { Markdown } from "./Markdown";
 const markdownRender = new MarkdownIt();
 
 interface ComponentProps {
@@ -29,6 +30,10 @@ export function WorkshopElementCard({
   const [isLocked, setIsLocked] = useState(true);
   const [isShowingOptions, setIsShowingOptions] = useState(false);
 
+  const [options, setOptions] = useState({
+    workshopElementCard: { showTagsInPreview: true },
+  });
+
   useEffect(() => {
     if (!isCollapsed) {
       setHTMLOverflow("hidden");
@@ -37,7 +42,7 @@ export function WorkshopElementCard({
     }
   }, [isCollapsed]);
 
-  const workshopElementContent = (
+  const modalContent = (
     <>
       <div className="tags are-small my-0">
         {tags.map((tag) => (
@@ -46,11 +51,7 @@ export function WorkshopElementCard({
           </span>
         ))}
       </div>
-      <p
-        dangerouslySetInnerHTML={{
-          __html: markdownRender.render(content),
-        }}
-      ></p>
+      <Markdown text={content}></Markdown>
       <ImprowikiLicenseText
         sourceUrl={sourceUrl}
         title={title}
@@ -77,9 +78,7 @@ export function WorkshopElementCard({
               Close
             </button>
           </header>
-          <section className="modal-card-body">
-            {workshopElementContent}
-          </section>
+          <section className="modal-card-body">{modalContent}</section>
           <footer className="modal-card-foot py-0">
             <button
               className="button is-light"
@@ -93,15 +92,27 @@ export function WorkshopElementCard({
           </footer>
         </div>
       </div>
+
       <div className="card">
-        <header className="card-header pr-3">
-          <p
-            className="card-header-title is-flex-grow-1 is-clickable"
-            onClick={() => setIsCollapsed(!isCollapsed)}
-          >
-            {title}
-          </p>
-          <div className="buttons">
+        <header className="card-header">
+          <div className="is-flex-grow-1">
+            <p
+              className="card-header-title is-clickable"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+            >
+              {title}
+            </p>
+            {options.workshopElementCard.showTagsInPreview && (
+              <div className="tags are-small px-4 pb-4">
+                {tags.map((tag) => (
+                  <span key={tag} className="tag is-light">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          <div className="buttons pr-3">
             <button
               className="button is-black is-responsive is-inverted is-align-self-center"
               onClick={() => setIsCollapsed(!isCollapsed)}
@@ -113,6 +124,7 @@ export function WorkshopElementCard({
             </button>
           </div>
         </header>
+        <div className="card-footer"></div>
         {isShowingOptions && (
           <footer className="card-footer">
             <button

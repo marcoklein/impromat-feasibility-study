@@ -2,7 +2,10 @@
 
 ## Unreleased
 
+## 0.4.0
+
 - New design for workshop list with modal to show information
+- Switch to new ui framework Evergreen
 
 ## 0.3.0
 
