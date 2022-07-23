@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import { Navbar } from "../components/Navbar";
-import { Evergreen } from "../components/playground/Evergreen";
+import { WorkshopRoutes } from "../components/WorkshopRoutes";
 import { SelectElements } from "../components/playground/SelectElements";
 
 export function PlaygroundPage() {
@@ -14,7 +13,7 @@ export function PlaygroundPage() {
     {
       name: "Evergreen",
       path: "evergreen",
-      element: <Evergreen></Evergreen>,
+      element: <WorkshopRoutes></WorkshopRoutes>,
     },
   ];
 
@@ -33,12 +32,12 @@ export function PlaygroundPage() {
 
   return (
     <>
-      <Navbar></Navbar>
-      <div>
+      {/* <Navbar></Navbar> */}
+      {/* <div>
         <Link className="button" to="/playground">
           Playground
         </Link>
-      </div>
+      </div> */}
       <Routes>
         <Route index element={fallback()}></Route>
         {components.map(({ path, element }) => (

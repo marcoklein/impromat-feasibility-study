@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Navbar } from "../components/Navbar";
-import { Workshop } from "../components/Workshop";
+import { Navbar } from "../components/old/Navbar";
+import { OldWorkshop } from "../components/old/OldWorkshop";
 import {
   findRandomWorkshopElementTitle,
   generateWorkshop,
@@ -85,10 +85,10 @@ export function WorkshopPreviewPage() {
   return (
     <>
       <Navbar></Navbar>
-      <Workshop
+      <OldWorkshop
         workshop={workshop}
         onChangeWorkshopElementClick={onChangeClick}
-      ></Workshop>
+      ></OldWorkshop>
     </>
   );
 }

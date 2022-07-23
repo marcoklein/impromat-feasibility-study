@@ -12,11 +12,13 @@ import { useNavigate } from "react-router-dom";
 interface PageHeaderComponentProps {
   showBackButton?: boolean;
   title?: string;
+  rightElement?: JSX.Element;
 }
 
 export function PageHeader({
   showBackButton,
   title,
+  rightElement,
 }: PageHeaderComponentProps) {
   const navigate = useNavigate();
   return (
@@ -44,9 +46,9 @@ export function PageHeader({
       <Pane flexGrow="1">
         <Heading>{title ? title : "Impromat"}</Heading>
       </Pane>
-      {/* <Pane>
-        <Button>New Workshop</Button>
-      </Pane> */}
+
+      {rightElement && <Pane>{rightElement}</Pane>}
+      <Pane></Pane>
     </Pane>
   );
 }

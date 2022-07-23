@@ -5,13 +5,11 @@ import {
   mdiEye,
 } from "@mdi/js";
 import Icon from "@mdi/react";
-import MarkdownIt from "markdown-it";
 import React, { useEffect, useState } from "react";
-import { setHTMLOverflow } from "../helpers/set-html-overflow";
-import { WorkshopElementModel } from "../models/WorkshopElementModel";
+import ReactMarkdown from "react-markdown";
+import { setHTMLOverflow } from "../../helpers/set-html-overflow";
+import { WorkshopElementModel } from "../../models/WorkshopElementModel";
 import { ImprowikiLicenseText } from "./ImprowikiLicenseText";
-import { Markdown } from "./Markdown";
-const markdownRender = new MarkdownIt();
 
 interface ComponentProps {
   element: WorkshopElementModel;
@@ -51,7 +49,7 @@ export function WorkshopElementCard({
           </span>
         ))}
       </div>
-      <Markdown text={content}></Markdown>
+      <ReactMarkdown>{content}</ReactMarkdown>
       <ImprowikiLicenseText
         sourceUrl={sourceUrl}
         title={title}

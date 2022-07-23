@@ -6,6 +6,8 @@
 
 - New design for workshop list with modal to show information
 - Switch to new ui framework Evergreen
+- Remove markdown it for rendering and switch to ReactMarkdown
+- Restructure component files
 
 ## 0.3.0
 
