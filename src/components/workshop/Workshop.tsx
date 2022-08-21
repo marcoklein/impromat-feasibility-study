@@ -16,11 +16,11 @@ import {
 } from "evergreen-ui";
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { generateWorkshop } from "../functions/generate-workshop";
-import { mapWorkshopElementTitlesToWorkshop } from "../functions/map-workshop-element-titles-to-workshop";
-import { WorkshopElementModel } from "../models/WorkshopElementModel";
-import { EditInput } from "./EditInput";
-import { UnstyledLink } from "./UnstyledLink";
+import { generateWorkshop } from "../../functions/generate-workshop";
+import { mapWorkshopElementTitlesToWorkshop } from "../../functions/map-workshop-element-titles-to-workshop";
+import { WorkshopElementModel } from "../../models/WorkshopElementModel";
+import { EditInput } from "../shared/EditInput";
+import { UnstyledLink } from "../shared/UnstyledLink";
 
 interface WorkshopComponentProps {
   allowEdit: boolean;

@@ -1,8 +1,8 @@
 import {
-  minorScale,
   CrossIcon,
-  IconButton,
   Heading,
+  IconButton,
+  minorScale,
   Pane,
   Paragraph,
 } from "evergreen-ui";
@@ -10,7 +10,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { useMediaQuery } from "react-responsive";
 import { Link, useParams } from "react-router-dom";
-import { IMPROV_DATABASE } from "../data/improv-database";
+import { IMPROV_DATABASE } from "../../data/improv-database";
 
 export function WorkshopElementDetailsFragment() {
   const params = useParams();

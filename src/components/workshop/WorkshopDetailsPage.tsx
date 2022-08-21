@@ -1,6 +1,6 @@
 import { IconButton, LockIcon, UnlockIcon } from "evergreen-ui";
 import React, { useState } from "react";
-import { Page } from "./Page";
+import { Page } from "../shared/Page";
 import { WorkshopComponent } from "./Workshop";
 
 export function WorkshopDetailsPage() {

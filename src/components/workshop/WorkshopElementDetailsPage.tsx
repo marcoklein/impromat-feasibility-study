@@ -1,5 +1,5 @@
 import React from "react";
-import { Page } from "./Page";
+import { Page } from "../shared/Page";
 import { WorkshopElementDetailsFragment } from "./WorkshopElementsDetailsFragment";
 
 export function WorkshopElementDetailsPage() {
