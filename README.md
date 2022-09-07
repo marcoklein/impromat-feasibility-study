@@ -1,4 +1,6 @@
-> Work in progress
+# Moved to https://github.com/marcoklein/impromat
+
+---
 
 # Impromat
 
